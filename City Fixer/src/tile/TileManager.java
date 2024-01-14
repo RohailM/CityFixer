@@ -12,7 +12,7 @@ import main.Map;
 public class TileManager {
 	Map m;
 	Tile[] tiles;
-	int[][] mapTileNum;
+	public int[][] mapTileNum;
 	
 	public TileManager(Map m) {
 		this.m = m;
@@ -42,26 +42,18 @@ public class TileManager {
 			InputStream is = getClass().getResourceAsStream(filePath);
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			
-			int col = 0;
-			int row = 0;
-			
-			while(col < m.screenCol && row < m.screenCol) {
-				String line = br.readLine();
-				
-				while (col < m.screenCol) {
-					String numbers[] = line.split(" ");
-					
-					int num = Integer.parseInt(numbers[col]);
-					
-					mapTileNum[col][row] = num;
-					col++;
-				}
-				
-				if (col == m.screenCol) {
-					col = 0;
-					row++;
-				}
-			}
+	        String line;
+	        int row = 0;
+
+	        while((line = br.readLine()) != null && row < m.screenRow) {
+	            String[] numbers = line.split(" ");
+	            
+	            for(int col = 0; col < m.screenCol; col++) {
+	                int num = Integer.parseInt(numbers[col]);
+	                mapTileNum[col][row] = num;
+	            }
+	            row++;
+	        }
 			
 			br.close();
 			
