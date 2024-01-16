@@ -1,89 +1,39 @@
 package tile;
 import java.awt.Graphics2D;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import javax.imageio.ImageIO;
-
 import main.Map;
 
 public class TileManager {
 	Map m;
-	Tile[] tiles;
-	public int[][] mapTileNum;
-	
-	public TileManager(Map m) {
-		this.m = m;
-		tiles = new Tile[3];
-		mapTileNum = new int[m.screenCol][m.screenRow];
-		loadTileImages();
-		loadMap("/maps/map.txt");
-	}
-	
-	public void loadTileImages() {
-		try {
-			tiles[0] = new Tile();
-			tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tile000.png"));
-			
-			tiles[1] = new Tile();
-			tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tile001.png"));
-			
-			tiles[2] = new Tile();
-			tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tile002.png"));
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void loadMap(String filePath) {
-		try {
-			InputStream is = getClass().getResourceAsStream(filePath);
-			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			
-	        String line;
-	        int row = 0;
+	private MapLayer baseLayer;
+    private MapLayer middleLayer;
+    private MapLayer topLayer;
+    
+    private LayerRenderer baseRenderer;
+    private LayerRenderer middleRenderer;
+    private LayerRenderer topRenderer;
+    
+    private TileLoader tileLoader;
+    private int tileSize;
+    
+    public TileManager(Map m) {
+    	this.m = m;
+        this.tileSize = m.tileSize;
+        this.tileLoader = new TileLoader();
+        
+        // Initialize layers
+        this.baseLayer = new MapLayer("/maps/lowLayer.txt", m.screenCol, m.screenRow);
+        this.middleLayer = new MapLayer("/maps/midLayer.txt", m.screenCol, m.screenRow);
+        this.topLayer = new MapLayer("/maps/topLayer.txt", m.screenCol, m.screenRow);
 
-	        while((line = br.readLine()) != null && row < m.screenRow) {
-	            String[] numbers = line.split(" ");
-	            
-	            for(int col = 0; col < m.screenCol; col++) {
-	                int num = Integer.parseInt(numbers[col]);
-	                mapTileNum[col][row] = num;
-	            }
-	            row++;
-	        }
-			
-			br.close();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void draw(Graphics2D g2) {
-		
-		int col = 0;
-		int row = 0;
-		int x = 0;
-		int y = 0;
-		
-		while (col < m.screenCol && row < m.screenRow) {
-			
-			int tileNum = mapTileNum[col][row];
-			
-			g2.drawImage(tiles[tileNum].image, x, y, m.tileSize, m.tileSize, null);
-			col++;
-			x += m.tileSize;
-			
-			if (col == m.screenCol) {
-				col = 0;
-				x = 0;
-				row++;
-				y += m.tileSize;
-			}
-		}
-
-	}
+        // Initialize renderers
+        this.baseRenderer = new LayerRenderer(baseLayer, tileLoader, tileSize);
+        this.middleRenderer = new LayerRenderer(middleLayer, tileLoader, tileSize);
+        this.topRenderer = new LayerRenderer(topLayer, tileLoader, tileSize);
+    }
+    
+    public void draw(Graphics2D g2) {
+        baseRenderer.drawLayer(g2, m.screenCol, m.screenRow);
+        middleRenderer.drawLayer(g2, m.screenCol, m.screenRow);
+        topRenderer.drawLayer(g2, m.screenCol, m.screenRow);
+    }
 }
