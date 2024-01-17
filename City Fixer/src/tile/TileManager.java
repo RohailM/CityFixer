@@ -31,6 +31,16 @@ public class TileManager {
         this.topRenderer = new LayerRenderer(topLayer, tileLoader, tileSize);
     }
     
+    public MapLayer getTopLayer() {
+    	return topLayer;
+    }
+    
+    public void changeTile(int row, int col) {
+        int currentTile = topLayer.getTileIndex(col, row);
+        int newTile = (currentTile == 47) ? -1 : 47; 
+        topLayer.setTileIndex(col, row, newTile);
+    }
+    
     public void draw(Graphics2D g2) {
         baseRenderer.drawLayer(g2, m.screenCol, m.screenRow);
         middleRenderer.drawLayer(g2, m.screenCol, m.screenRow);
