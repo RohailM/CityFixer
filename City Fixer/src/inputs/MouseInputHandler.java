@@ -3,20 +3,25 @@ package inputs;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import main.Game;
 import main.Map;
+import states.DialogueState;
 import tile.TileManager;
 
 public class MouseInputHandler implements MouseListener{
 
+    private Game game;
     private Map map;
     private TileManager tileM;
 
-    public MouseInputHandler (Map m, TileManager t) {
-        this.map = m;
-        this.tileM = t;
+    public MouseInputHandler(Game game, Map map, TileManager tileM) {
+        this.game = game;
+        this.map = map;
+        this.tileM = tileM;
     }
 
     private void handleMouseClick(MouseEvent e) {
+        System.out.println("clicked");
         if(map.minigame >= 0){
             if(validateClick(e)){
                 System.out.println("Hello");
@@ -30,7 +35,8 @@ public class MouseInputHandler implements MouseListener{
             if (col >= 0 && row >= 0 && col < map.screenCol && row < map.screenRow) {
                 if(tileM.getTopLayer().getTileIndex(col, row) >= 88 && tileM.getTopLayer().getTileIndex(col, row) <= 93){
                     map.minigame = 0; // Enter minigame state
-                    map.getDialogueManager().speak(0); // Show initial dialogue
+                    System.out.println("clicked");
+                    game.setState(new DialogueState(game, 0));
                 }
                 
             }

@@ -19,7 +19,7 @@ public class LayerRenderer {
             for (int col = 0; col < cols; col++) {
                 Tile tile = tileLoader.getTile(layer.getTileIndex(col, row));
                 if (tile != null && tile.getImage() != null) {
-                    g2.drawImage(tile.getImage(), x, row * tileSize, tileSize, tileSize, null);
+                    g2.drawImage(tile.getImage(), x, (row * tileSize) - 15, tileSize, tileSize, null);
                 }
                 x += tileSize;
             }

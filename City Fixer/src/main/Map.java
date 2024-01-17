@@ -3,6 +3,7 @@ import javax.swing.*;
 
 import minigame.DialogueManager;
 import minigame.DialogueRenderer;
+import states.DialogueState;
 import tile.TileManager;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,37 +21,51 @@ public class Map extends JPanel {
 	public final int screenWidth = screenCol * tileSize;
 	public final int screenHeight = screenRow * tileSize;
 	
-	private TileManager tileM = new TileManager(this);
-	private DialogueManager dialogueManager = new DialogueManager();
-	private DialogueRenderer dialogueRenderer = new DialogueRenderer(this, dialogueManager);
+	private TileManager tileM;
+	private DialogueManager dialogueManager;
+	private DialogueRenderer dialogueRenderer;
 	
+	/*
+	 * 	0 house
+	 *  1 Water
+	 *  2 tree
+	 *  3 garbage
+	 *  4 factory
+	 * 	5 crops 
+	 *  6 cell tower
+	*/
 	public int minigame = -1;
-	//0 house
-	//1 Water
-	//2 tree
-	//3 garbage 
-	//4 factory
-	//5 crops 
-	//6 cell tower
 	
-	public Map() {
-		setPreferredSize(new Dimension(screenWidth, screenHeight));
-	}
+    private Game game; 
+
+    public Map(Game game) {
+    	this.game = game;
+    	this.tileM = new TileManager(this);
+    	this.dialogueManager = new DialogueManager();
+    	this.dialogueRenderer = new DialogueRenderer(this, dialogueManager);
+        setPreferredSize(new Dimension(screenWidth, screenHeight));
+    }
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		getTileM().draw(g2);
-        if (minigame >= 0) { // If in a minigame state, draw the dialogue box.
+		
+        if (game.getGameState() instanceof DialogueState) {
             dialogueRenderer.drawBox(g2);
         }
+
 		g2.dispose();
 	}
 
 	public TileManager getTileM() {
 		return tileM;
 	}
-
+	
+	public Dimension getSizeOfFrame() {
+		return new Dimension(screenWidth, screenHeight);
+	}
+	
 	public int getScale() {
 		return scale;
 	}
