@@ -22,19 +22,10 @@ public class MapLayer {
 
 	        while((line = br.readLine()) != null && row < rows) {
 	            String[] numbers = line.split(" ");
-	            if (numbers.length != cols) {
-	                System.err.println("Row " + (row + 1) + " in " + filePath + " does not have the expected " + cols + " columns.");
-	                continue; 
-	            }
 	            
 	            for(int col = 0; col < cols; col++) {
-	            	try {
-	                    int num = Integer.parseInt(numbers[col]);
-	                    layerData[col][row] = num;
-	            	} catch (NumberFormatException e) {
-	                    System.err.println("Invalid number format in " + filePath + " at row " + (row + 1) + ", col " + (col + 1));
-	            	}
-
+	                int num = Integer.parseInt(numbers[col]);
+	                layerData[col][row] = num;
 	            }
 	            row++;
 	        }
@@ -46,13 +37,21 @@ public class MapLayer {
 		}
     }
 
-    public int getTileIndex(int col, int row) {
+    public int getTileType(int col, int row) {
         return layerData[col][row];
     }
     
-    public void setTileIndex(int col, int row, int tileIndex) {
-        if (col >= 0 && col < layerData.length && row >= 0 && row < layerData[col].length) {
-            layerData[col][row] = tileIndex;
-        }
+    public void setTile(int col, int row, int newTileType) {
+    	layerData[col][row] = newTileType;
+    }
+    
+    public void replaceTile(int oldTileType, int newTileType) {
+    	for (int i = 0; i < layerData.length; i++) {
+    		for (int j = 0; j < layerData[i].length; j++) {
+    			if (layerData[i][j] == oldTileType) {
+    				layerData[i][j] = newTileType;
+    			}
+    		}
+    	}
     }
 }

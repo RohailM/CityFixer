@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class TileLoader {
-    private static final int TOTAL_TILES = 191; // Total number of tiles
+    private static final int TOTAL_TILES = 266; // Total number of tiles
     private Tile[] tiles;
 
     public TileLoader() {

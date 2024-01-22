@@ -1,0 +1,68 @@
+-1 nothing
+
+0-8 grass
+
+9-12 horizontal road
+13-16 vertical road
+17-20 downright road
+21-24 downleft road
+25-28 upright road
+
+29 rock
+30-37 rock edge
+
+38-46 water
+
+47-48 power generator
+49-63 power cable
+
+64 crabgrass
+65 purple flower
+66 blue flower
+67 pink flower
+68 seeds
+69-70 oaktree
+71-72 snowtree
+73 waterseeds
+74-75 wintertree
+
+76-87 big house
+88-93 small house
+
+94 big blue trash
+95 big green trash
+96 small blue
+97 small green
+98-99 gray trash
+100-101 public trash
+
+102 gate
+103-108 parts
+109-115 tesla
+116-117 wall
+
+118-148 factory
+
+149-152 axe
+153-156 big stump
+157-158 small stump
+159-169 triple log
+170-177 well
+
+178-189 crops
+
+190 garbage
+
+191-192 small solar panel
+
+193-209 fixed cell tower
+
+210-217 fixed parts
+
+218-251 fixed factory
+
+252-255 fixed trees
+
+256 toxic water
+
+257-265 big solar panels

@@ -17,9 +17,9 @@ public class LayerRenderer {
         for (int row = 0; row < rows; row++) {
             int x = 0;
             for (int col = 0; col < cols; col++) {
-                Tile tile = tileLoader.getTile(layer.getTileIndex(col, row));
+                Tile tile = tileLoader.getTile(layer.getTileType(col, row));
                 if (tile != null && tile.getImage() != null) {
-                    g2.drawImage(tile.getImage(), x, (row * tileSize) - 15, tileSize, tileSize, null);
+                    g2.drawImage(tile.getImage(), x - 1, (row * tileSize) - 20, tileSize, tileSize, null);
                 }
                 x += tileSize;
             }
