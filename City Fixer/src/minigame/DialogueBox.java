@@ -2,6 +2,11 @@ package minigame;
 
 import java.awt.*;
 
+/**
+ * 
+ * @author Lucas Namba
+ *
+ */
 public class DialogueBox {
 
     private int x;
@@ -19,27 +24,25 @@ public class DialogueBox {
         width = w;
         height = h;
         index = minigameIndex;
-        setDialogue();
+        loadDialogues();
     }
 
-    private void setDialogue(){
+    private void loadDialogues(){
         dialogue[0] = "The houses in this city use inefficient and \nharmful energy, help by using renewable and \neco-friendly energy";
-        option[0] = "add solar panels";
+        option[0] = "Add solar panels";
 
-        dialogue[1] = "The lake's water was polluted with toxic \nquemicals and litter, help by cleaning the \nwater";
+        dialogue[1] = "The lake's water was polluted with toxic \nchemicals and litter, help by cleaning the \nwater";
         option[1] = "Clean the lake";
 
         dialogue[2] = "Deforestation is a big problem, help to bring \nback the flora of the city";
         option[2] = "Plant new trees";
 
-        dialogue[3] = "placeholder garbage";
-        option[3] = "placeholder";
+        dialogue[3] = "The factory's operations have been harmful\nto the environment and the workers' health.\nIt's emitting dangerous pollutants and \nconsuming vast amounts of energy. Help\nby making it more safe and fixing the cracks.";
+        option[3] = "Rehabilitate factory";
 
-        dialogue[4] = "placeholder factory";
-        option[4] = "placeholder";
+        dialogue[4] = "placeholder cell tower";
+        option[4] = "Repair cell tower";
 
-        dialogue[5] = "placeholder cell tower";
-        option[5] = "placeholder";
     }
     
     public void drawBox(Graphics2D g2){

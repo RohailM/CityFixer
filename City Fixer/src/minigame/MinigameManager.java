@@ -107,8 +107,6 @@ public class MinigameManager{
     
     public void setMinigameComplete(int id, boolean state){
         minigameCompleted[id] = state;
-        System.out.println(Arrays.toString(minigameCompleted));
-        System.out.println("Minigame ID: " + id);
         m.fixComponent(id);
     }
     

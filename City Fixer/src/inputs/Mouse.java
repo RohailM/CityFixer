@@ -3,6 +3,7 @@ package inputs;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import main.Map;
 import tile.TileManager;
 import minigame.MinigameManager;
 
@@ -13,17 +14,19 @@ import minigame.MinigameManager;
  */
 public class Mouse implements MouseListener{
 
+	Map map;
     TileManager tileM;
     MinigameManager miniM;
     int minigame;
 
-    public Mouse(TileManager tileManager, MinigameManager miniM){
+    public Mouse(Map m, TileManager tileManager, MinigameManager miniM){
+    	this.map = m;
         tileM = tileManager;
         this.miniM = miniM;
     }
 
     private void handleMouseClick(MouseEvent e) {
-        if(miniM.getMinigame() >= 0){
+        if(miniM.getMinigame() >= 0 || map.sendWelcomeMessage){
             if(boxClick(e))
                 miniM.runMinigame(miniM.getMinigame());
             miniM.setMinigame(-1);
