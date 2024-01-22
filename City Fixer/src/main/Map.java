@@ -31,4 +31,5 @@ public class Map extends JPanel {
 		tileM.draw(g2);
 		g2.dispose();
 	}
+	
 }

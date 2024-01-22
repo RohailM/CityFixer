@@ -25,10 +25,14 @@ public class TileManager {
         this.middleLayer = new MapLayer("/maps/midLayer.txt", m.screenCol, m.screenRow);
         this.topLayer = new MapLayer("/maps/topLayer.txt", m.screenCol, m.screenRow);
 
-        // Initialize renderers
+        // Initialize renderer
         this.baseRenderer = new LayerRenderer(baseLayer, tileLoader, tileSize);
         this.middleRenderer = new LayerRenderer(middleLayer, tileLoader, tileSize);
         this.topRenderer = new LayerRenderer(topLayer, tileLoader, tileSize);
+    }
+    
+    public MapLayer getTopLayer() {
+    	return topLayer;
     }
     
     public void draw(Graphics2D g2) {

@@ -5,6 +5,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import inputs.MouseInputHandler;
+
 public class Frame extends JFrame {
 	Frame(String title, int x, int y, boolean resizeable) {
 		super(title);
@@ -15,6 +17,9 @@ public class Frame extends JFrame {
 		
 		Map map = new Map();
 		add(map);
+		
+		MouseInputHandler mouse = new MouseInputHandler(map, map.tileM);
+		addMouseListener(mouse);
 	}
 	
 	public void alignCenter() {
