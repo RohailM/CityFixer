@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Represents a single tile in the game
- * @author Rohail Memon
+ * @author Rohail Memon and Brianna and Wahab designed the map
  */
 public class Tile {
 	// Image that represents the visual appearance of the tile

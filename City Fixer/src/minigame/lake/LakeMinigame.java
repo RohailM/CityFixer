@@ -4,7 +4,10 @@ import javax.swing.*;
 
 import minigame.MinigameManager;
 
-// The MiniGame class serves as the main class for the Lake Cleanup Game
+/* The MiniGame class serves as the main class for the Lake Cleanup Game
+ * @author Wahab Sattar
+ */
+
 public class LakeMinigame {
 
     MinigameManager miniM;

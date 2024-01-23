@@ -8,7 +8,9 @@ import minigame.MinigameManager;
  * The GameFrame class represents the main frame of the Sustainability Factory Restoration Game.
  * This class extends the JFrame class from the Swing framework, serving as the primary window for the game's graphical user interface (GUI).
  * It holds the setup and configuration of the game window, including the title, size, default close operation, and the addition of the main game panel.
+ * @author Wahab Sattar
  */
+
 public class FactoryMinigame extends JFrame {
 
     /**

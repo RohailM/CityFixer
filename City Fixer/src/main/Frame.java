@@ -7,16 +7,11 @@ import javax.swing.JOptionPane;
 import inputs.Mouse;
 import inputs.WindowListener;
 
-<<<<<<< HEAD
-import inputs.MouseInputHandler;
-
-=======
 /** 
  * The Frame class represents the main game window.
  * It initializes the game environment including the map and input listeners.
  * @author Rohail Memon
  */
->>>>>>> branch 'main' of https://github.com/RohailM/CityFixer.git
 public class Frame extends JFrame {
 	/**
 	 * Constructs the main game window and initializes the game components
@@ -46,16 +41,11 @@ public class Frame extends JFrame {
 		
 		add(map);
 		
-<<<<<<< HEAD
-		MouseInputHandler mouse = new MouseInputHandler(map, map.tileM);
-		addMouseListener(mouse);
-=======
 		Mouse mouse = new Mouse(map, map.tileM, map.miniM);
 		addMouseListener(mouse);
 
 		WindowListener windowListener = new WindowListener(map.tileM, username);
 		addWindowListener(windowListener);
->>>>>>> branch 'main' of https://github.com/RohailM/CityFixer.git
 	}
 	
 }

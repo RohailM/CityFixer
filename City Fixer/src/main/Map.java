@@ -51,6 +51,7 @@ public class Map extends JPanel {
             sendWelcomeMessage = true;
 			welcomeMessage = new WelcomeDialogue(this, tileSize*2, tileSize, screenWidth - (tileSize*4), tileSize*4, username);
 			
+
             // Timer to hide the welcome message after 13.5 seconds (13500 milliseconds)
             Timer timer = new Timer(13500, e -> {
                 sendWelcomeMessage = false;
@@ -77,6 +78,8 @@ public class Map extends JPanel {
 			tileM.plantTrees();
 		} else if (partOfCity == 3) {
 			tileM.rehabilitateFactory();
+		} else if (partOfCity == 4){
+			tileM.repairCellTower();
 		}
 		
 		repaint(); // Repaints the map to reflect the changes made
@@ -93,11 +96,19 @@ public class Map extends JPanel {
         if (sendWelcomeMessage) {
             welcomeMessage.drawWelcomeBox(g2);
         }
+		int minigamesCompleted = 0;
+		for(int i = 0; i < miniM.getMinigameCompleted().length; i++){
+			if(miniM.getMinigameCompleted()[i]){
+				minigamesCompleted++;
+			}
+			if(minigamesCompleted == miniM.getMinigameCompleted().length){
+				miniM.gameOver(g);
+			}
+		}
 		if(miniM.getMinigame() >= 0){
 			miniM.setDialogueBox();
 			miniM.getDialogueBox().drawBox(g2);
 		}
 		g2.dispose();
 	}
-	
 }

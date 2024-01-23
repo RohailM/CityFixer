@@ -17,6 +17,7 @@ import java.util.TimerTask;
  * This class extends the JPanel class from the Swing framework, serving as the primary area for the game's graphical user interface (GUI) components and gameplay elements.
  * It includes a progress bar, timer, and mouse event handling for building the factory.
  * The panel is responsible for updating the construction progress, managing the game timer, displaying game tutorials, and handling the finishing of the game.
+ * @author Wahab Sattar
  */
 public class GamePanel extends JPanel implements Interactable {
     private JProgressBar progressBar;
@@ -28,7 +29,7 @@ public class GamePanel extends JPanel implements Interactable {
     private int clicksRequired = 30;
     private boolean gameFinished = false;
 
-    private int timerSeconds = 45;
+    private int timerSeconds = 30;
     private Timer timer;
 
     // Counter for tracking clicks
@@ -97,7 +98,7 @@ public class GamePanel extends JPanel implements Interactable {
                 "Welcome to the Sustainability Factory Restoration Game!\n" +
                         "Click anywhere on the factory to build and restore it.\n" +
                         "Complete 30 clicks to finish the game.\n" +
-                        "You have 45 seconds to finish.",
+                        "You have 30 seconds to finish.",
                 "Game Tutorial",
                 JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -121,11 +122,13 @@ public class GamePanel extends JPanel implements Interactable {
     }
 
     /**
-     * Show educational content after every 5 clicks.
+     * Show educational content after every 8 clicks.
+     * Shows an educational fact every 8 clicks
+     * This method is from chatGPT
      */
     private void showEducationalContent() {
-        if (clickCounter % 5 == 0 && clickCounter > 0 && clickCounter < clicksRequired) {
-            int factIndex = (clickCounter / 5) - 1;
+        if (clickCounter % 8 == 0 && clickCounter > 0 && clickCounter < clicksRequired) {
+            int factIndex = (clickCounter / 8) - 1;
             if (factIndex < sdg9Facts.length) {
                 JOptionPane.showMessageDialog(this, sdg9Facts[factIndex], "SDG 9 Fact", JOptionPane.INFORMATION_MESSAGE);
             }

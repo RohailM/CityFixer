@@ -47,11 +47,7 @@ public class TileManager {
         
         this.fixedLayer = new MapLayer("res/maps/fixedLayer.txt", m.screenCol, m.screenRow);
 
-<<<<<<< HEAD
-        // Initialize renderer
-=======
         // Initialize renderers for each layer
->>>>>>> branch 'main' of https://github.com/RohailM/CityFixer.git
         this.baseRenderer = new LayerRenderer(baseLayer, tileLoader, tileSize);
         this.middleRenderer = new LayerRenderer(middleLayer, tileLoader, tileSize);
         this.topRenderer = new LayerRenderer(topLayer, tileLoader, tileSize);
@@ -65,12 +61,6 @@ public class TileManager {
         return topLayer;
     }
     
-<<<<<<< HEAD
-    public MapLayer getTopLayer() {
-    	return topLayer;
-    }
-    
-=======
     /**
      * Adds solar panels to the houses by replacing the tiles in the house region of the map to those with solar panels
      */
@@ -133,7 +123,6 @@ public class TileManager {
      * Draws each layer of the map using the corresponding layer renderer
      * @param g2 The Graphics2D instance used for drawing
      */
->>>>>>> branch 'main' of https://github.com/RohailM/CityFixer.git
     public void draw(Graphics2D g2) {
         baseRenderer.drawLayer(g2, m.screenCol, m.screenRow);
         middleRenderer.drawLayer(g2, m.screenCol, m.screenRow);

@@ -7,6 +7,10 @@ import minigame.MinigameManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
  /**
  * Create and initialize the introduction GUI of this minigame
@@ -81,6 +85,14 @@ public class IntroductionGUI extends JFrame {
         setSize(622, 685);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        getContentPane().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                requestFocusInWindow();
+            }
+        });
+        
+        requestFocusInWindow();
     }
 
     /**
@@ -133,7 +145,35 @@ public class IntroductionGUI extends JFrame {
      * @return JTextField
      */
     private JTextField enterEngineerType() {
-        return new JTextField("Enter the engineer you would like to be (Electrical, Mechanical or Industial)               ");
+    	JTextField engineerType = new JTextField("Enter the engineer you would like to be (Electrical, Mechanical or Industial)               ");
+    	engineerType.addFocusListener(new FocusListener() {
+            /**
+             * Invoked when the engineer type field gains focus
+             * Clears the placeholder text when the field is focused if the placeholder text is currently displayed.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+    		public void focusGained(FocusEvent e) {
+    			if (engineerType.getText().equals("Enter the engineer you would like to be (Electrical, Mechanical or Industial)               ")) {
+                   engineerType.setText("");
+                   engineerType.setForeground(Color.BLACK);
+                }
+            }
+            
+            /**
+             * Invoked when the engineer type field loses focus
+             * Sets the placeholder text if the field is empty when focus is lost.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+            public void focusLost(FocusEvent e) {
+                if (engineerType.getText().isEmpty()) {
+                   engineerType.setForeground(Color.GRAY);
+                   engineerType.setText("Enter the engineer you would like to be (Electrical, Mechanical or Industial)               ");
+                }
+            }
+        });
+        return engineerType;
     }
 
     /**
@@ -141,7 +181,35 @@ public class IntroductionGUI extends JFrame {
      * @return JTextField
      */
     private JTextField enterEngineerName() {
-        return new JTextField("Enter name                                                                                                                   ");
+        JTextField name = new JTextField("Enter name                                                                                                                   ");
+        name.addFocusListener(new FocusListener() {
+            /**
+             * Invoked when the login field gains focus
+             * Clears the placeholder text when the field is focused if the placeholder text is currently displayed.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+            public void focusGained(FocusEvent e) {
+                if (name.getText().equals("Enter name                                                                                                                   ")) {
+                    name.setText("");
+                    name.setForeground(Color.BLACK);
+                }
+            }
+            
+            /**
+             * Invoked when the login field loses focus
+             * Sets the placeholder text if the field is empty when focus is lost.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+            public void focusLost(FocusEvent e) {
+                if (name.getText().isEmpty()) {
+                    name.setForeground(Color.GRAY);
+                    name.setText("Enter name                                                                                                                   ");
+                }
+            }
+        });
+        return name;
     }
 
     /**
@@ -149,7 +217,36 @@ public class IntroductionGUI extends JFrame {
      * @return JTextField
      */
     private JTextField enterEngineerGender() {
-        return new JTextField("Enter gender (Male or Female)");
+        JTextField gender = new JTextField("Enter gender (Male or Female)");
+        gender.addFocusListener(new FocusListener() {
+            /**
+             * Invoked when the gender field gains focus
+             * Clears the placeholder text when the field is focused if the placeholder text is currently displayed.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+            public void focusGained(FocusEvent e) {
+                if (gender.getText().equals("Enter gender (Male or Female)")) {
+                    gender.setText("");
+                    gender.setForeground(Color.BLACK);
+                }
+            }
+            
+            /**
+             * Invoked when the gender field loses focus
+             * Sets the placeholder text if the field is empty when focus is lost.
+             * @author Rohail Memon
+             * @param e The focus event
+             */
+            public void focusLost(FocusEvent e) {
+                if (gender.getText().isEmpty()) {
+                    gender.setForeground(Color.GRAY);
+                    gender.setText("Enter gender (Male or Female)");
+                }
+            }
+        });
+        
+        return gender;
     }
 
     /**

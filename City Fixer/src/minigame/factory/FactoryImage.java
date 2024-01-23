@@ -6,6 +6,7 @@ import java.io.File;
 
 /**
  * The FactoryImage class represents an image used in the Sustainability Factory Restoration Game.
+ * @author Wahab Sattar
  */
 public class FactoryImage {
     private Image image;

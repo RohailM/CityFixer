@@ -8,7 +8,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// The Garbage class represents the main panel for the lake cleanup game
+/*
+ * The Garbage class represents the main panel for the lake cleanup game
+ * @author Wahab Sattar
+ */
 public class WaterLitter extends JPanel {
 
     MinigameManager miniM;
@@ -30,6 +33,8 @@ public class WaterLitter extends JPanel {
         this.miniM = miniM;
 
         // Add mouse listeners to handle user interactions
+        //Loop which checks if the mouse is pressed inside the piece of trash, after the trash is found using the mouse, break out of the loop
+        //Used assistance from chatGPT
         addMouseListener(new MouseAdapter() {
             // Handle mouse press event
             public void mousePressed(MouseEvent e) {

@@ -38,9 +38,8 @@ public class StartScreen {
     }
     
     /**
-     * 
-     * @author Brianna Nguyen
      * Creates the GUI components of the start screen and sets up their properties and layouts
+     * @author Brianna Nguyen
      */
     private void createAndShowGUI() {
         frame = createFrame();
@@ -54,7 +53,7 @@ public class StartScreen {
         panel.add(login);
         panel.add(button);
 
-        // Components are positioned explicitly using their absolute coordinates (x, y)
+        // Components are positioned using their absolute coordinates (x, y)
         panel.setLayout(null);
 
         // Moves and resizes these objects
@@ -123,7 +122,7 @@ public class StartScreen {
     }
 
     /**
-     * 
+     * Creates and sets the basic features of the frame
      * @author Brianna Nguyen
      *
      */
@@ -138,7 +137,7 @@ public class StartScreen {
     }
 
     /**
-     * 
+     * Creates the main panel of the frame where other components will be added
      * @author Brianna Nguyen
      *
      */
@@ -150,7 +149,7 @@ public class StartScreen {
     }
 
     /**
-     * 
+     * Creates the title label
      * @author Brianna Nguyen
      *
      */
@@ -162,7 +161,7 @@ public class StartScreen {
     }
 
     /**
-     * 
+     * Creates the image label and sets the basic dimensions/features
      * @author Brianna Nguyen
      *
      */
@@ -177,7 +176,7 @@ public class StartScreen {
     }
 
     /**
-     * 
+     * Creates a JTextField for the user to enter their username 
      * @author Brianna Nguyen
      *
      */
@@ -218,7 +217,7 @@ public class StartScreen {
     }
     
     /**
-     * 
+     * Creates the start button for the user to start the game
      * @author Brianna Nguyen
      *
      */

@@ -631,41 +631,61 @@ public class MinigameGUI extends JFrame {
     private JButton createSubmitButton(){
         JButton submitButton = new JButton("Submit Choices");
 
+
         // From ChatGPT
         submitButton.addActionListener(new ActionListener() {
             @Override
             /**
-             * Performs the follow actions 
+             * Performs the following actions
              * @param e
              */
             public void actionPerformed(ActionEvent e) {
                 // Initializes the correct Materials object
                 Materials firstMaterial = new Materials("Silicon Solar Cells", 0.28, true, "low", "Convert the Sun's light into electricity using the photovoltaic effect" );
-                Materials secondMaterial = new Materials("      Magnesium    ", 2.55, true, "low", "A mineral that when used as part of a cement mixture." );
+                Materials secondMaterial = new Materials("     Glass Sheet     ", 19.97, true, "low", "Glass sheets are made from tempered glass Tempered solar panel glass also provides high strength, excellent transmissivity, and low reflection." );
                 Materials thirdMaterial = new Materials("Aluminum Frame", 591.25, true, "high", "Used for door frames, window frames,railing frames and roof trusses" );
                 Materials fourthMaterial = new Materials("Standard 12V Wire", 19.36, true, "high", "Suitable for shorter installations with minimal distance between components" );
                 Materials fifthMaterial = new Materials("               Bus Wire              ", 17.98, true, "high", "Flexible and easily shaped/contoured into place, and easily welded and soldered" );
 
+
+                // Tracks how many of each object/correct material there is
+                // Resets it to 0 so that each time the user presses the button it doesn't keep adding to the count
+                int siliconSolarCellsCount = 0;
+                int glassSheetCount = 0;
+                int aluminumFrameCount = 0;
+                int standardWireCount = 0;
+                int busWireCount = 0;
+
+
                 // For each object in the toolbox ArrayList
                 for (Materials m : toolbox.getMaterialChoices()){
-                    // Checks if that Materials object is one of the correct objects
-                    if (m.getName().equals(firstMaterial.getName()) || m.getName().equals(secondMaterial.getName()) || m.getName().equals(thirdMaterial.getName()) || m.getName().equals(fourthMaterial.getName()) || m.getName().equals(fifthMaterial.getName())){
-                        // Keeps track of how many correct items there are
-                    	System.out.println(count);
-                        count++;
+                    // Checks if the object is one of the correc objects and add one to its counter
+                    if (m.getName().equals(firstMaterial.getName())) {
+                        siliconSolarCellsCount++;
+                    } else if (m.getName().equals(secondMaterial.getName())) {
+                        glassSheetCount++;
+                    } else if (m.getName().equals(thirdMaterial.getName())) {
+                        aluminumFrameCount++;
+                    } else if (m.getName().equals(fourthMaterial.getName())) {
+                        standardWireCount++;
+                    } else if (m.getName().equals(fifthMaterial.getName())) {
+                        busWireCount++;
                     }
                 }
-                // Verifies that there are at least 5 correct items (one or more of each)
-                if (count >= 5){
-                    JOptionPane.showMessageDialog(MinigameGUI.this, "Congratulations you have successfully built solar panels!\n" + 
+
+
+                // Verifies that there is at least one of each material type
+                if (siliconSolarCellsCount >= 1 && glassSheetCount >= 1 && aluminumFrameCount >= 1 && standardWireCount >= 1 && busWireCount >= 1){
+                    // If so, it will open the congratulating/facts frame
+                	JOptionPane.showMessageDialog(MinigameGUI.this, "Congratulations you have successfully built solar panels!\n" + 
                             "Here is a fact about our SDG:\n" +
                             "In developing countries, 2.6 billion people lack access to constant electricity");
                     MinigameGUI.this.dispose();
-                    miniM.setMinigameComplete(0, true);
-                }
+                    miniM.setMinigameComplete(0, true);                }
             }
         });
         return submitButton;
     }
+
 }
 

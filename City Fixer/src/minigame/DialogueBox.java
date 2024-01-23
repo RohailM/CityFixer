@@ -3,9 +3,8 @@ package minigame;
 import java.awt.*;
 
 /**
- * 
  * @author Lucas Namba
- *
+ * This class handles the dialogue box that appear after clicking in a tile
  */
 public class DialogueBox {
 
@@ -18,6 +17,14 @@ public class DialogueBox {
     private String[] dialogue = new String[DIALOGUE_SIZE];
     private String[] option = new String[6];
 
+    /**
+     * The contructor will initialize the necessary variables to draw the dialogue box
+     * @param x for placement of the dialogue box and text
+     * @param y for placement of the dialogue box and text
+     * @param w for width of the dialogue box
+     * @param h for height of the dialogue box
+     * @param minigameIndex for what text should be displayed
+     */
     public DialogueBox(int x, int y, int w, int h, int minigameIndex){
         this.x = x;
         this.y = y;
@@ -27,6 +34,9 @@ public class DialogueBox {
         loadDialogues();
     }
 
+    /**
+     * This method is used to initiallize the dialogue and option array
+     */
     private void loadDialogues(){
         dialogue[0] = "The houses in this city use inefficient and \nharmful energy, help by using renewable and \neco-friendly energy";
         option[0] = "Add solar panels";
@@ -40,11 +50,15 @@ public class DialogueBox {
         dialogue[3] = "The factory's operations have been harmful\nto the environment and the workers' health.\nIt's emitting dangerous pollutants and \nconsuming vast amounts of energy. Help\nby making it more safe and fixing the cracks.";
         option[3] = "Rehabilitate factory";
 
-        dialogue[4] = "placeholder cell tower";
+        dialogue[4] = "The cell tower is broken, help to rebuild it";
         option[4] = "Repair cell tower";
 
     }
     
+    /**
+     * This method is used to draw the dialogue box
+     * @param g2 to draw it
+     */
     public void drawBox(Graphics2D g2){
 
         Color c = new Color(0, 0, 0,180);
